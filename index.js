@@ -18,7 +18,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const allowedOrigins = [
   'http://127.0.0.1:5500',
   'http://localhost:5500',
-  'https://yourfrontend.vercel.app', // replace with actual deployed frontend URL
+  'https://loginfrontend-e0ut.onrender.com', // replace with actual deployed frontend URL
 ];
 
 app.use(cors({
