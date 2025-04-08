@@ -19,7 +19,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 
 const allowedOrigins = [
-    'http://localhost:3000',
+    'http://localhost:5500',
     'https://your-frontend.vercel.app', // Change this to your actual frontend domain
     'https://your-custom-domain.com'
   ];
