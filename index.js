@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const User = require('./models/User.js');
+const cors = require('cors');
+
+
+
 
 dotenv.config();
 
@@ -12,6 +16,28 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET;
+
+
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://your-frontend.vercel.app', // Change this to your actual frontend domain
+    'https://your-custom-domain.com'
+  ];
+  
+  // ✅ CORS config
+  app.use(cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
+  }));
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
